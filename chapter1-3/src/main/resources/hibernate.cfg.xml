@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!--db 드라이버-->
+        <property name="hibernate.connection.driver_class">
+            org.hsqldb.jdbcDriver
+        </property>
+        <!--db 타입 설정 :  dialect(방언) 설정은 해당 db에 따른 쿼리문 생성에 필요한 필수 요소임 -->
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.HSQLDialect
+        </property>
+
+        <!-- hsql은 인메모리 db이며 데이터는 파일로 떨굼. -->
+        <property name="hibernate.connection.url">
+            jdbc:hsqldb:hsql://localhost
+        </property>
+        <property name="hibernate.connection.username">
+            username
+        </property>
+        <property name="hibernate.connection.password">
+            password
+        </property>
+
+        <!--c3p0 (db pool) 설정-->
+        <property name="c3p0.min_size">5</property>
+        <property name="c3p0.max_size">20</property>
+        <property name="c3p0.timeout">300</property>
+        <property name="c3p0.max_statements">50</property>
+        <property name="c3p0.idle_test_period">3000</property>
+
+        <!--sql 로그 보기-->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <!-- xml 매핑 파일 목록 -->
+        <mapping resource="hello/Message.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>
